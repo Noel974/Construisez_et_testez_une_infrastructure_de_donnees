@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: meteologie
+
+models:
+  - name: stg_meteologie
+    description: "Nettoyage et standardisation des données météo issues d'Airbyte"
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: name
+        tests:
+          - not_null
+
+  - name: int_meteologie
+    description: "Préparation des données météo pour la dimension des stations"
+    columns:
+      - name: id
+        tests:
+          - not_null
+
+  - name: dim_weather_stations
+    description: "Dimension finale des stations météo amateurs et professionnelles"
+    columns:
+      - name: station_id
+        tests:
+          - not_null
+          - unique
