@@ -5,6 +5,8 @@ sources:
     schema: public
     tables:
       - name: meteologie
+      - name: belgique
+      - name: France
 
 models:
   - name: stg_meteologie
@@ -32,3 +34,23 @@ models:
         tests:
           - not_null
           - unique
+
+  - name: stg_stations_belgique
+    description: "Données météo brutes de la station IICHTE19 (Belgique), nettoyées et enrichies."
+    columns:
+      - name: weather_station_id
+        tests:
+          - not_null
+      - name: measurement_time
+        tests:
+          - not_null
+
+  - name: stg_stations_france
+    description: "Données météo brutes de la station ILAMAD25 (France), nettoyées et enrichies."
+    columns:
+      - name: weather_station_id
+        tests:
+          - not_null
+      - name: measurement_time
+        tests:
+          - not_null

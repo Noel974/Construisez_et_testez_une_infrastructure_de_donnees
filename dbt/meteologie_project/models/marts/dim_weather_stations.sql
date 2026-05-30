@@ -1,12 +1,11 @@
-select
-    id as station_id,
-    name as station_name,
+select distinct
+    station_id,
+    station_name,
     latitude,
     longitude,
     elevation,
-    station_type,
-    license_type,
-    license_url,
-    license_source,
-    license_metadata
-from {{ ref('int_meteologie') }}
+    city,
+    country,
+    hardware,
+    software
+from {{ ref('int_stations_all') }}
